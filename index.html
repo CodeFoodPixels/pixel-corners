@@ -184,7 +184,8 @@
         border: 4px solid #000;
       }
 
-      .value-form__submit {
+      .value-form__submit,
+      .value-pane__copy {
         font-family: "Press Start 2P", Courier, monospace;
         background-color: #000000;
         color: #ffffff;
@@ -195,7 +196,8 @@
         white-space: normal;
       }
 
-      .value-form__submit:hover {
+      .value-form__submit:hover,
+      .value-pane__copy:hover {
         background-color: #333333;
       }
 
@@ -203,6 +205,8 @@
         flex: 1;
         min-height: 300px;
         font-size: 16px;
+        margin-bottom: 16px;
+        resize: none;
       }
 
       .preview-pane {
@@ -314,7 +318,8 @@
           />
         </form>
         <label for="result"><h2>Result</h2></label>
-        <textarea class="value-pane__result" id="result"></textarea>
+        <textarea class="value-pane__result" id="result" readonly></textarea>
+        <button class="value-pane__copy">Copy</button>
       </div>
       <div class="preview-pane">
         <h2>Preview</h2>

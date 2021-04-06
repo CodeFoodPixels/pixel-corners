@@ -114,5 +114,28 @@ function showResult(e) {
   }px`;
 }
 
+function copy(e) {
+  const fakeElem = document.createElement("textarea");
+  fakeElem.style.fontSize = "0px";
+  fakeElem.style.border = "0";
+  fakeElem.style.padding = "0";
+  fakeElem.style.margin = "0";
+  fakeElem.style.position = "absolute";
+  fakeElem.style.left = "-9999px"; // Move element to the same position vertically
+  fakeElem.style.top = "0px";
+  fakeElem.setAttribute("readonly", "");
+  fakeElem.value = document.querySelector(".value-pane__result").value;
+  document.body.appendChild(fakeElem);
+  fakeElem.select();
+  document.execCommand("copy");
+  document.body.removeChild(fakeElem);
+  e.target.innerHTML = "Copied!";
+  setTimeout(() => {
+    e.target.innerHTML = "Copy";
+  }, 2000);
+}
+
+document.querySelector(".value-pane__copy").addEventListener("click", copy);
+
 document.querySelector(".value-form").addEventListener("submit", showResult);
 window.addEventListener("load", showResult);
