@@ -98,6 +98,7 @@ function edgeCoord(n) {
 
 function showResult(e) {
   e.preventDefault();
+
   const radius = parseInt(document.querySelector(".radius").value, 10);
   const pixelSize = parseInt(document.querySelector(".pixel_size").value, 10);
 
@@ -112,6 +113,8 @@ function showResult(e) {
   document.querySelector(".pane-wrapper").style.padding = `${
     radius * (pixelSize / 4)
   }px`;
+
+  history.replaceState({}, "", `?radius=${radius}&multiplier=${pixelSize}`);
 }
 
 function copy(e) {
@@ -138,4 +141,19 @@ function copy(e) {
 document.querySelector(".value-pane__copy").addEventListener("click", copy);
 
 document.querySelector(".value-form").addEventListener("submit", showResult);
-window.addEventListener("load", showResult);
+
+window.addEventListener("load", (e) => {
+  const url = new URL(window.location.href);
+  const radius = url.searchParams.get("radius");
+  const multiplier = url.searchParams.get("multiplier");
+
+  if (radius && parseInt(radius, 10)) {
+    document.querySelector(".radius").value = parseInt(radius, 10);
+  }
+
+  if (multiplier && parseInt(multiplier, 10)) {
+    document.querySelector(".pixel_size").value = parseInt(multiplier, 10);
+  }
+
+  showResult(e);
+});
