@@ -1,0 +1,22 @@
+{
+  "name": "pixel-corners",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "subfont": "glyphhanger ./index.html --whitelist=X1234567890 --subset=./PressStart2P-Regular.ttf --formats=woff2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeFoodPixels/pixel-corners.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeFoodPixels/pixel-corners/issues"
+  },
+  "homepage": "https://github.com/CodeFoodPixels/pixel-corners#readme",
+  "dependencies": {
+    "glyphhanger": "^5.0.0"
+  }
+}
